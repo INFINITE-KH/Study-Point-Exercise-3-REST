@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script>
+function randomQuote() {
+   var xhttp = new XMLHttpRequest();
+   xhttp.open("GET", "http://localhost:8080/quotes/api/quote/get/random", false);
+   xhttp.setRequestHeader("Content-type", "application/json");
+   xhttp.send();
+   var response = JSON.parse(xhttp.responseText);
+   document.body.appendChild(document.createElement("div").innerHTML = response.toString());
+   
+}
+        </script>
+    </head>
+    <body>
+        <h1>Quote of the day</h1>
+         <button type="button" onclick="randomQuote()">get random quote</button>   
+        <a href="http://localhost:8080/quotes/api/quote/get/random">Daily quote</a>
+    </body>
+</html>

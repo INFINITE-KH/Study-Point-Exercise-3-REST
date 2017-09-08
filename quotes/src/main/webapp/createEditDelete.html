@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            function createQuote() {
+                alert();
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "http://localhost:8080/quotes/api/quote/create", false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send();
+            var response = JSON.parse(xhttp.responseText);
+            document.body.appendChild(document.createElement("div").innerHTML = response.toString());
+            }
+            
+            function editQuote() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("PUT", "http://localhost:8080/quotes/api/quote/update/1", false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send();
+            var response = JSON.parse(xhttp.responseText);
+            document.body.appendChild(document.createElement("div").innerHTML = response.toString());
+            }
+            
+            function deleteQuote() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("DELETE", "http://localhost:8080/quotes/api/quote/delete/1", false);
+            xhttp.setRequestHeader("Content-type", "application/json");
+            xhttp.send();
+            var response = JSON.parse(xhttp.responseText);
+            document.body.appendChild(document.createElement("div").innerHTML = response.toString());
+            }
+        </script>
+    </head>
+    
+    <body>
+        <h1>Create, edit and delete</h1>
+        
+      <form> 
+        <input type="text" name="quote" id="create" value="Create quote"/>
+        <input type="button" value="Create" onclick="createQuote().herf='http://localhost:8080/quotes/api/quote/create'">
+      </form>
+        
+        <p></p>
+        
+        <input type="text" name="editeQuote" id="edit" value="Edit quote"/>
+        <input type="button" value="Edit" onclick="editQuote()">
+        <a href="http://localhost:8080/quotes/api/quote/update/1">Created quote</a>
+        
+        <p></p>
+        
+        <input type="text" name="deleteQuote" id="edit" value="Delete quote"/>
+        <input type="button" value="Delete" onclick="deleteQuote()">
+        <a href="http://localhost:8080/quotes/api/quote/delete/1">Deleted quote</a>
+    </body>
+</html>
